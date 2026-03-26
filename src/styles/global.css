@@ -17,11 +17,38 @@ html, body{
 body{
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background: var(--bg-green);
+  background-color: var(--bg-green);
+  background-image: linear-gradient(
+    145deg,
+    #0a5a34 0%,
+    #0f7a42 38%,
+    #128a4a 55%,
+    #0d6b3a 100%
+  );
+  background-size: 220% 220%;
+  background-attachment: fixed;
+  animation: landing-bg-drift 22s ease-in-out infinite;
   color: var(--text);
+}
+
+@keyframes landing-bg-drift{
+  0%, 100%{
+    background-position: 0% 40%;
+  }
+  50%{
+    background-position: 100% 60%;
+  }
 }
 
 a{
   color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce){
+  body{
+    animation: none;
+    background-size: auto;
+    background-attachment: scroll;
+  }
 }
 
