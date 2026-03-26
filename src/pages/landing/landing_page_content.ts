@@ -17,22 +17,17 @@ export type LandingFood = {
   instagramHandle?: LandingInstagramHandle
 }
 
-export type LandingGalleryPhoto = {
-  src: string
-  alt: string
-}
-
 export const LANDING_PAGE_CONTENT = {
   siteTitle: 'MERCAT SOLIDARI X PALESTINA',
   eventTitle: '2 anys de solidaritat amb palestina',
   eventDateLabel: '11/04',
   talleresFamiliares: [
-    { name: 'Taller de chapas' },
+    { name: 'Taller de xapes', instagramHandle: { handle: 'mercatxpalestina' } },
     { name: 'Taller de serigrafia', instagramHandle: { handle: 'la.cocota' } },
-    { name: 'Taller de escritura árabe', instagramHandle: { handle: 'associoeccit' } },
+    { name: 'Taller d’escriptura àrab', instagramHandle: { handle: 'associoeccit' } },
   ] satisfies LandingWorkshop[],
   musicaYpoesia: {
-    heading: 'Música y poesía',
+    heading: 'Música i poesia',
     instagramUrl: 'https://www.instagram.com/',
     instagramLabel: 'Instagram',
     artistsHeading: 'Artistes',
@@ -42,18 +37,17 @@ export const LANDING_PAGE_CONTENT = {
       { name: 'Dal Yah', instagramHandle: { handle: 'dal_yah__' } },
       { name: 'DJ Nada Halaweh', instagramHandle: { handle: 'nhalawa' } },
     ] satisfies LandingArtist[],
-    photos: [] as LandingGalleryPhoto[],
   },
   comidaArabe: {
-    heading: 'Comida árabe',
+    heading: 'Menjar àrab',
     items: [
       { name: 'El Forn Fatayer', instagramHandle: { handle: 'elfornfatayer' } },
       { name: 'Saj Zuzu', instagramHandle: { handle: 'saj_zuzu' } },
       { name: 'Chef Yasser Saadoune', instagramHandle: { handle: 'yassersaadoune' } },
     ] satisfies LandingFood[],
   },
-  cartelHeading: 'Cartel',
-  locationHeading: 'Lugar',
+  cartelHeading: 'Cartell',
+  locationHeading: 'Lloc',
   location: {
     addressLine1: 'Av. del Cardenal Vidal i Barraquer, 28,',
     addressLine2: 'Horta-Guinardó, 08035, Barcelona.',

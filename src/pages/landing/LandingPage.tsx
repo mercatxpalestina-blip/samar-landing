@@ -52,7 +52,7 @@ export function LandingPage(): JSX.Element {
 
         <section className="sectionCard" aria-labelledby="talleres-fam">
           <h3 id="talleres-fam" className="sectionHeading">
-            Talleres Familiares
+            Tallers familiars
           </h3>
           <ul className="landingList">
             {LANDING_PAGE_CONTENT.talleresFamiliares.map((item) => (
@@ -85,8 +85,6 @@ export function LandingPage(): JSX.Element {
           <h3 id="musica-poesia" className="sectionHeading">
             {musica.heading}
           </h3>
-
-          <div className="subHeading">{musica.artistsHeading}</div>
           <div className="artistsGrid">
             {musica.artists.map((artist) => (
               <div key={artist.name} className="personCard">
@@ -112,21 +110,6 @@ export function LandingPage(): JSX.Element {
               </div>
             ))}
           </div>
-
-          {musica.photos.length > 0 ? (
-            <>
-              <div className="subHeading">Fotos</div>
-              <div className="photoGrid" role="list">
-                {musica.photos.map((photo) => (
-                  <div key={photo.src} className="photoItem" role="listitem">
-                    <img className="photoImage" src={photo.src} alt={photo.alt} loading="lazy" />
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <p className="mutedText">Galeria de fotos: afegeix les imatges al fitxer de configuració.</p>
-          )}
         </section>
 
         <section className="sectionCard" aria-labelledby="menjar-arab">
@@ -181,7 +164,7 @@ export function LandingPage(): JSX.Element {
 
           <div className="mapWrap">
             <iframe
-              title="Mapa del event"
+              title="Mapa de l'esdeveniment"
               className="mapFrame"
               src={LANDING_PAGE_CONTENT.location.mapEmbedUrl}
               loading="lazy"
