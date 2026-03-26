@@ -71,5 +71,9 @@ export const LANDING_PAGE_CONTENT = {
     mapEmbedUrl:
       'https://www.google.com/maps?q=Av.+del+Cardenal+Vidal+i+Barraquer,+28,+Horta-Guinard%C3%B3,+08035,+Barcelona&output=embed',
   },
+  footer: {
+    organizerLine: 'Organiza Mercat Solidari x Palestina',
+    instagramUrl: 'https://www.instagram.com/mercatxpalestina',
+  },
 } as const
 

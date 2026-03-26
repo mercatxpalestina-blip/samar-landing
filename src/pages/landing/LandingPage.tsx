@@ -1,5 +1,6 @@
 import posterImage from '../../../assets/EVENTO_HORARIOS-ad3cbdc6-e761-446a-88c7-5663161b1356.png'
 import titleImage from '../../../assets/title.png'
+import footerLogoImage from '../../../assets/mercatxpalestina.jpg'
 import { LANDING_PAGE_CONTENT } from './landing_page_content'
 import defaultAvatar from '../../../assets/avatar_default.svg'
 import { toInstagramUrl } from './utils/instagram'
@@ -208,6 +209,32 @@ export function LandingPage(): JSX.Element {
           </div>
         </section>
       </div>
+
+      <footer className="landingFooter" aria-label="Peu de pàgina">
+        <div className="landingFooterBrand">
+          <p className="landingFooterText">{LANDING_PAGE_CONTENT.footer.organizerLine}</p>
+          <img
+            className="landingFooterLogo"
+            src={footerLogoImage}
+            alt="Logotip del Mercat Solidari x Palestina"
+            loading="lazy"
+          />
+        </div>
+        <a
+          className="landingFooterInsta"
+          href={LANDING_PAGE_CONTENT.footer.instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram de Mercat Solidari x Palestina"
+        >
+          <svg className="landingFooterInstaIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.12 1.97a1.19 1.19 0 1 1 0 2.38 1.19 1.19 0 0 1 0-2.38zm-4.42 2.7a4.55 4.55 0 1 1 0 9.09 4.55 4.55 0 0 1 0-9.09zm0 1.5a3.05 3.05 0 1 0 0 6.09 3.05 3.05 0 0 0 0-6.09z"
+            />
+          </svg>
+        </a>
+      </footer>
     </main>
   )
 }
