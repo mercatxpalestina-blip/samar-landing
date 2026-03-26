@@ -1,4 +1,5 @@
 import posterImage from '../../../assets/EVENTO_HORARIOS-ad3cbdc6-e761-446a-88c7-5663161b1356.png'
+import titleImage from '../../../assets/title.png'
 import { LANDING_PAGE_CONTENT } from './landing_page_content'
 import defaultAvatar from '../../../assets/avatar_default.svg'
 import { toInstagramUrl } from './utils/instagram'
@@ -44,16 +45,19 @@ export function LandingPage(): JSX.Element {
 
       <div className="landingContent">
         <section className="eventHero" aria-label="Presentació de l'esdeveniment">
-          <h1 className="eventTitle">{LANDING_PAGE_CONTENT.eventTitle}</h1>
-          <p className="eventDate">
-            Data: <span className="eventDateValue">{LANDING_PAGE_CONTENT.eventDateLabel}</span>
-          </p>
+          <h1 className="srOnly">{LANDING_PAGE_CONTENT.eventTitle}</h1>
+          <img className="eventTitleImage" src={titleImage} alt={LANDING_PAGE_CONTENT.eventTitle} />
         </section>
 
         <section className="sectionCard" aria-labelledby="talleres-fam">
-          <h3 id="talleres-fam" className="sectionHeading">
-            Tallers familiars
-          </h3>
+          <div className="sectionHeaderRow">
+            <h3 id="talleres-fam" className="sectionHeading">
+              Tallers familiars
+            </h3>
+            <div className="sectionTime" aria-label="Horari">
+              {LANDING_PAGE_CONTENT.sectionTimes.talleresFamiliares}
+            </div>
+          </div>
           <ul className="landingList">
             {LANDING_PAGE_CONTENT.talleresFamiliares.map((item) => (
               <li key={item.name} className="landingListItem">
@@ -82,9 +86,14 @@ export function LandingPage(): JSX.Element {
         </section>
 
         <section className="sectionCard" aria-labelledby="musica-poesia">
-          <h3 id="musica-poesia" className="sectionHeading">
-            {musica.heading}
-          </h3>
+          <div className="sectionHeaderRow">
+            <h3 id="musica-poesia" className="sectionHeading">
+              {musica.heading}
+            </h3>
+            <div className="sectionTime" aria-label="Horari">
+              {LANDING_PAGE_CONTENT.sectionTimes.musicaYpoesia}
+            </div>
+          </div>
           <div className="artistsGrid">
             {musica.artists.map((artist) => (
               <div key={artist.name} className="personCard">
@@ -113,9 +122,14 @@ export function LandingPage(): JSX.Element {
         </section>
 
         <section className="sectionCard" aria-labelledby="menjar-arab">
-          <h3 id="menjar-arab" className="sectionHeading">
-            {LANDING_PAGE_CONTENT.comidaArabe.heading}
-          </h3>
+          <div className="sectionHeaderRow">
+            <h3 id="menjar-arab" className="sectionHeading">
+              {LANDING_PAGE_CONTENT.comidaArabe.heading}
+            </h3>
+            <div className="sectionTime" aria-label="Horari">
+              {LANDING_PAGE_CONTENT.sectionTimes.comida}
+            </div>
+          </div>
           <ul className="landingList">
             {LANDING_PAGE_CONTENT.comidaArabe.items.map((item) => (
               <li key={item.name} className="landingListItem">
@@ -143,10 +157,30 @@ export function LandingPage(): JSX.Element {
           </ul>
         </section>
 
-        <section className="sectionCard" aria-labelledby="cartel">
-          <h3 id="cartel" className="sectionHeading">
-            {LANDING_PAGE_CONTENT.cartelHeading}
+        <section className="sectionCard sectionCardCentered" aria-labelledby="pintura-directe">
+          <h3 id="pintura-directe" className="sectionHeading sectionHeadingCentered">
+            {LANDING_PAGE_CONTENT.pinturaEnDirecte.heading}
           </h3>
+          <div className="centerStack">
+            <img
+              className="centerAvatar"
+              src={getLocalAvatarSrc(LANDING_PAGE_CONTENT.pinturaEnDirecte.instagramHandle.handle)}
+              alt={`Portada de ${LANDING_PAGE_CONTENT.pinturaEnDirecte.instagramHandle.handle}`}
+              loading="lazy"
+            />
+            <div className="centerName">{LANDING_PAGE_CONTENT.pinturaEnDirecte.artistName}</div>
+            <a
+              className="pillLink"
+              href={toInstagramUrl(LANDING_PAGE_CONTENT.pinturaEnDirecte.instagramHandle.handle)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              @{LANDING_PAGE_CONTENT.pinturaEnDirecte.instagramHandle.handle}
+            </a>
+          </div>
+        </section>
+
+        <section className="sectionCard" aria-labelledby="cartel">
           <img
             className="posterLarge"
             src={posterImage}
@@ -161,6 +195,7 @@ export function LandingPage(): JSX.Element {
           </h3>
           <div className="locationText">{LANDING_PAGE_CONTENT.location.addressLine1}</div>
           <div className="locationText">{LANDING_PAGE_CONTENT.location.addressLine2}</div>
+          <div className="locationText">{LANDING_PAGE_CONTENT.location.addressLine3}</div>
 
           <div className="mapWrap">
             <iframe

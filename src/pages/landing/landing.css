@@ -82,6 +82,13 @@
   text-shadow: 0 10px 26px var(--shadow);
 }
 
+.eventTitleImage{
+  width: min(680px, 100%);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .eventDate{
   margin: 10px 0 0;
   font-size: clamp(16px, 3vw, 20px);
@@ -109,6 +116,60 @@
   font-weight: 900;
   text-shadow: 0 8px 20px var(--shadow);
   color: var(--text);
+}
+
+.sectionHeadingCentered{
+  text-align: center;
+}
+
+.sectionCardCentered{
+  text-align: center;
+}
+
+.centerStack{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.centerAvatar{
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.2);
+}
+
+.centerName{
+  font-weight: 950;
+  text-shadow: 0 10px 24px var(--shadow);
+}
+
+.sectionHeaderRow{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.sectionHeaderRow .sectionHeading{
+  margin-bottom: 0;
+}
+
+.sectionTime{
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  opacity: 0.9;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.14);
+  white-space: nowrap;
 }
 
 .subHeading{
