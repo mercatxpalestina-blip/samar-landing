@@ -46,7 +46,7 @@ export const LANDING_PAGE_CONTENT = {
       { name: 'Katou Sheng Morrison', instagramHandle: { handle: 'aeioukatou' } },
       { name: 'Taha Salim Ghyadh', instagramHandle: { handle: 'tahasalimghyadh' } },
       { name: 'Dal Yah', instagramHandle: { handle: 'dal_yah__' } },
-      { name: 'DJ Nada Halaweh', instagramHandle: { handle: 'nhalawa' } },
+      { name: 'DJ Nada', instagramHandle: { handle: 'nhalawa' } },
     ] satisfies LandingArtist[],
   },
   comidaArabe: {
