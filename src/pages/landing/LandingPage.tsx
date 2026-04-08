@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import posterImage from '../../../assets/EVENTO_HORARIOS-ad3cbdc6-e761-446a-88c7-5663161b1356.png'
 import titleImage from '../../../assets/title.png'
 import footerLogoImage from '../../../assets/mercatxpalestina.jpg'
@@ -6,6 +7,9 @@ import defaultAvatar from '../../../assets/avatar_default.svg'
 import { toInstagramUrl } from './utils/instagram'
 import { RevealOnScroll } from './RevealOnScroll'
 import './landing.css'
+
+const MOBILE_HEADER_BREAKPOINT_PX = 520
+const HEADER_COMPACT_SCROLL_Y = 28
 
 const avatarAssets = import.meta.glob('../../../assets/*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
@@ -37,15 +41,42 @@ function getLocalAvatarSrc(handle: string): string {
 
 export function LandingPage(): JSX.Element {
   const musica = LANDING_PAGE_CONTENT.musicaYpoesia
+  const [headerCompact, setHeaderCompact] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_HEADER_BREAKPOINT_PX}px)`)
+
+    const syncCompact = () => {
+      if (!mq.matches) {
+        setHeaderCompact(false)
+        return
+      }
+      setHeaderCompact(window.scrollY > HEADER_COMPACT_SCROLL_Y)
+    }
+
+    syncCompact()
+    window.addEventListener('scroll', syncCompact, { passive: true })
+    mq.addEventListener('change', syncCompact)
+    return () => {
+      window.removeEventListener('scroll', syncCompact)
+      mq.removeEventListener('change', syncCompact)
+    }
+  }, [])
+
+  const headerCompactClass = headerCompact ? ' landingHeader--compact' : ''
+  const rootCompactClass = headerCompact ? ' landingRoot--headerCompact' : ''
+
   return (
-    <main className="landingRoot">
-      <header className="landingHeader" aria-label="Títol del mercat">
+    <main className={`landingRoot${rootCompactClass}`}>
+      <header className={`landingHeader${headerCompactClass}`} aria-label="Títol del mercat">
         <h2 className="landingHeaderRow">
           <span className="landingTitle">{LANDING_PAGE_CONTENT.siteTitle}</span>
           <span className="landingHeaderSep" aria-hidden="true">
             ·
           </span>
-          <span className="landingDescription">{LANDING_PAGE_CONTENT.siteDescription}</span>
+          <span className="landingHeaderDescriptionWrap">
+            <span className="landingDescription">{LANDING_PAGE_CONTENT.siteDescription}</span>
+          </span>
         </h2>
       </header>
 
