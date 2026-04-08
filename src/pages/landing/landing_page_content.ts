@@ -17,19 +17,39 @@ export type LandingFood = {
   instagramHandle?: LandingInstagramHandle
 }
 
+export type LandingNoticeWithLink = {
+  before: string
+  linkLabel: string
+  href: string
+  after: string
+}
+
+export type LandingComidaArabe = {
+  heading: string
+  raffleNotice: LandingNoticeWithLink
+  items: LandingFood[]
+}
+
 export type LandingLivePainting = {
   heading: string
   artistName: string
   instagramHandle: LandingInstagramHandle
+  raffleNotice: string
+}
+
+export type LandingSolidarySale = {
+  name: string
+  instagramHandle?: LandingInstagramHandle
 }
 
 export const LANDING_PAGE_CONTENT = {
   siteTitle: 'MERCAT SOLIDARI X PALESTINA',
+  siteDescription: 'Un projecte de asocioació SAMAR',
   eventTitle: '2 anys de solidaritat amb palestina',
   eventDateLabel: '11/04',
   sectionTimes: {
     talleresFamiliares: '10:30–12:00h',
-    musicaYpoesia: '12:00–14:00h',
+    musicaYpoesia: '12:00–16:00h',
     comida: '14:00–15:30h',
   },
   talleresFamiliares: [
@@ -51,17 +71,34 @@ export const LANDING_PAGE_CONTENT = {
   },
   comidaArabe: {
     heading: 'Menjar àrab',
+    raffleNotice: {
+      before:
+        'En reservar plaça ajudes a que no es malgasti el menjar i, a canvi, us obsequiarem amb una papereta per al sorteig del quadre de la pintura en directe. Reserveu la vostra plaça ',
+      linkLabel: 'aquí',
+      href: 'https://forms.gle/Mw4d1Qme18ofNob87',
+      after: '',
+    },
     items: [
       { name: 'El Forn Fatayer', instagramHandle: { handle: 'elfornfatayer' } },
       { name: 'Saj Zuzu', instagramHandle: { handle: 'saj_zuzu' } },
       { name: 'Chef Yasser Saadoune', instagramHandle: { handle: 'yassersaadoune' } },
-    ] satisfies LandingFood[],
-  },
+      { name: 'Forn Yara Gracia', instagramHandle: { handle: 'fornyaragracia' } },
+    ],
+  } satisfies LandingComidaArabe,
   pinturaEnDirecte: {
     heading: 'Pintura en directe',
     artistName: 'Juan Kantor',
     instagramHandle: { handle: '_juan_kantor_' },
+    raffleNotice: 'Aquesta obra es sortejarà amb la venda de paperetes.',
   } satisfies LandingLivePainting,
+  solidarySales: {
+    heading: 'Vendes solidàries',
+    items: [
+      { name: 'Mercat Solidari x Palestina', instagramHandle: { handle: 'mercatxpalestina' } },
+      { name: 'Palmira Almalika', instagramHandle: { handle: 'palmiraalmalika' } },
+      { name: 'Lovely Things By Afnan', instagramHandle: { handle: '__lovely._.things__' } },
+    ] satisfies LandingSolidarySale[],
+  },
   cartelHeading: 'Cartell',
   locationHeading: 'Lloc',
   location: {

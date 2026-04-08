@@ -40,9 +40,13 @@ export function LandingPage(): JSX.Element {
   return (
     <main className="landingRoot">
       <header className="landingHeader" aria-label="Títol del mercat">
-        <div className="landingTitle" role="heading" aria-level={2}>
-          {LANDING_PAGE_CONTENT.siteTitle}
-        </div>
+        <h2 className="landingHeaderRow">
+          <span className="landingTitle">{LANDING_PAGE_CONTENT.siteTitle}</span>
+          <span className="landingHeaderSep" aria-hidden="true">
+            ·
+          </span>
+          <span className="landingDescription">{LANDING_PAGE_CONTENT.siteDescription}</span>
+        </h2>
       </header>
 
       <div className="landingContent">
@@ -164,6 +168,18 @@ export function LandingPage(): JSX.Element {
               </li>
             ))}
           </ul>
+          <p className="centerRaffleNotice">
+            {LANDING_PAGE_CONTENT.comidaArabe.raffleNotice.before}
+            <a
+              className="centerRaffleNoticeLink"
+              href={LANDING_PAGE_CONTENT.comidaArabe.raffleNotice.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {LANDING_PAGE_CONTENT.comidaArabe.raffleNotice.linkLabel}
+            </a>
+            {LANDING_PAGE_CONTENT.comidaArabe.raffleNotice.after}
+          </p>
           </section>
         </RevealOnScroll>
 
@@ -188,6 +204,42 @@ export function LandingPage(): JSX.Element {
             >
               @{LANDING_PAGE_CONTENT.pinturaEnDirecte.instagramHandle.handle}
             </a>
+          </div>
+          <p className="centerRaffleNotice">
+            {LANDING_PAGE_CONTENT.pinturaEnDirecte.raffleNotice}
+          </p>
+          </section>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="sectionCard" aria-labelledby="vendes-solidaries">
+          <h3 id="vendes-solidaries" className="sectionHeading sectionHeadingCentered">
+            {LANDING_PAGE_CONTENT.solidarySales.heading}
+          </h3>
+          <div className="salesGrid">
+            {LANDING_PAGE_CONTENT.solidarySales.items.map((item) => (
+              <div key={item.name} className="saleCard">
+                {item.instagramHandle ? (
+                  <img
+                    className="saleAvatar"
+                    src={getLocalAvatarSrc(item.instagramHandle.handle)}
+                    alt={`Portada de ${item.instagramHandle.handle}`}
+                    loading="lazy"
+                  />
+                ) : null}
+                <div className="saleName">{item.name}</div>
+                {item.instagramHandle ? (
+                  <a
+                    className="pillLink saleLink"
+                    href={toInstagramUrl(item.instagramHandle.handle)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @{item.instagramHandle.handle}
+                  </a>
+                ) : null}
+              </div>
+            ))}
           </div>
           </section>
         </RevealOnScroll>
