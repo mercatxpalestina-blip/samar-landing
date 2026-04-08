@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import posterImage from '../../../assets/EVENTO_HORARIOS-ad3cbdc6-e761-446a-88c7-5663161b1356.png'
 import titleImage from '../../../assets/title.png'
 import footerLogoImage from '../../../assets/mercatxpalestina.jpg'
@@ -9,7 +9,15 @@ import { RevealOnScroll } from './RevealOnScroll'
 import './landing.css'
 
 const MOBILE_HEADER_BREAKPOINT_PX = 520
-const HEADER_COMPACT_SCROLL_Y = 28
+const HEADER_COMPACT_SCROLL_Y = 40
+
+function readMobileHeaderCompact(): boolean {
+  if (typeof window === 'undefined') return false
+  return (
+    window.matchMedia(`(max-width: ${MOBILE_HEADER_BREAKPOINT_PX}px)`).matches &&
+    window.scrollY > HEADER_COMPACT_SCROLL_Y
+  )
+}
 
 const avatarAssets = import.meta.glob('../../../assets/*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
@@ -41,9 +49,9 @@ function getLocalAvatarSrc(handle: string): string {
 
 export function LandingPage(): JSX.Element {
   const musica = LANDING_PAGE_CONTENT.musicaYpoesia
-  const [headerCompact, setHeaderCompact] = useState(false)
+  const [headerCompact, setHeaderCompact] = useState(readMobileHeaderCompact)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mq = window.matchMedia(`(max-width: ${MOBILE_HEADER_BREAKPOINT_PX}px)`)
 
     const syncCompact = () => {
@@ -57,9 +65,12 @@ export function LandingPage(): JSX.Element {
     syncCompact()
     window.addEventListener('scroll', syncCompact, { passive: true })
     mq.addEventListener('change', syncCompact)
+    const onPageShow = () => syncCompact()
+    window.addEventListener('pageshow', onPageShow)
     return () => {
       window.removeEventListener('scroll', syncCompact)
       mq.removeEventListener('change', syncCompact)
+      window.removeEventListener('pageshow', onPageShow)
     }
   }, [])
 
@@ -84,7 +95,14 @@ export function LandingPage(): JSX.Element {
         <RevealOnScroll>
           <section className="eventHero" aria-label="Presentació de l'esdeveniment">
             <h1 className="srOnly">{LANDING_PAGE_CONTENT.eventTitle}</h1>
-            <img className="eventTitleImage" src={titleImage} alt={LANDING_PAGE_CONTENT.eventTitle} />
+            <img
+              className="eventTitleImage"
+              src={titleImage}
+              alt={LANDING_PAGE_CONTENT.eventTitle}
+              width={1048}
+              height={498}
+              decoding="async"
+            />
           </section>
         </RevealOnScroll>
 

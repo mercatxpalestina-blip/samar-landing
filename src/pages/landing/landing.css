@@ -1,13 +1,12 @@
 .landingRoot{
   min-height: 100vh;
-  /* Compensa la cabecera fija */
-  padding: 76px 16px 40px;
+  /* Compensa la cabecera fija (sin transición: evita saltos al hidratar / restaurar scroll) */
+  padding: 56px 16px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  transition: padding-top 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .landingHeader{
@@ -93,11 +92,11 @@
 
 @media (max-width: 520px){
   .landingRoot{
-    padding-top: 104px;
+    padding-top: 96px;
   }
 
   .landingRoot.landingRoot--headerCompact{
-    padding-top: 74px;
+    padding-top: 56px;
   }
 
   .landingHeader{
@@ -105,8 +104,8 @@
   }
 
   .landingHeader--compact{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .landingHeaderRow{
@@ -212,22 +211,19 @@
 .eventTitleImage{
   width: min(680px, 100%);
   height: auto;
+  aspect-ratio: 1048 / 498;
   display: block;
   margin: 0 auto;
 }
 
 .revealScrollRoot{
   opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
 }
 
 .revealScrollRoot--visible{
   opacity: 1;
-  transform: translateY(0);
   will-change: auto;
 }
 
@@ -690,7 +686,6 @@
   }
 
   .landingHeader,
-  .landingRoot,
   .landingHeaderDescriptionWrap,
   .eventHero,
   .sectionCard,
