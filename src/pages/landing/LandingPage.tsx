@@ -265,21 +265,21 @@ export function LandingPage(): JSX.Element {
           <h3 id="vendes-solidaries" className="sectionHeading sectionHeadingCentered">
             {LANDING_PAGE_CONTENT.solidarySales.heading}
           </h3>
-          <div className="salesGrid">
+          <ul className="landingList">
             {LANDING_PAGE_CONTENT.solidarySales.items.map((item) => (
-              <div key={item.name} className="saleCard">
+              <li key={item.name} className="landingListItem">
                 {item.instagramHandle ? (
                   <img
-                    className="saleAvatar"
+                    className="accountAvatar"
                     src={getLocalAvatarSrc(item.instagramHandle.handle)}
                     alt={`Portada de ${item.instagramHandle.handle}`}
                     loading="lazy"
                   />
                 ) : null}
-                <div className="saleName">{item.name}</div>
+                <span className="landingListItemName">{item.name}</span>
                 {item.instagramHandle ? (
                   <a
-                    className="pillLink saleLink"
+                    className="pillLink"
                     href={toInstagramUrl(item.instagramHandle.handle)}
                     target="_blank"
                     rel="noreferrer"
@@ -287,9 +287,9 @@ export function LandingPage(): JSX.Element {
                     @{item.instagramHandle.handle}
                   </a>
                 ) : null}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           </section>
         </RevealOnScroll>
 

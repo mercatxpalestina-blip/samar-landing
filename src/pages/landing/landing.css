@@ -465,8 +465,7 @@
   }
 }
 
-.personCard,
-.saleCard{
+.personCard{
   padding: 12px 12px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.10);
@@ -478,23 +477,20 @@
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
-.personCard:hover,
-.saleCard:hover{
+.personCard:hover{
   transform: translateY(-4px);
   border-color: rgba(255,255,255,0.18);
   box-shadow: 0 16px 34px rgba(0,0,0,0.2);
   background: rgba(0,0,0,0.16);
 }
 
-.personName,
-.saleName{
+.personName{
   font-weight: 950;
   margin-bottom: 8px;
   text-shadow: 0 10px 24px var(--shadow);
 }
 
-.personAvatar,
-.saleAvatar{
+.personAvatar{
   width: 54px;
   height: 54px;
   border-radius: 999px;
@@ -506,14 +502,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.personCard:hover .personAvatar,
-.saleCard:hover .saleAvatar{
+.personCard:hover .personAvatar{
   transform: scale(1.06);
   box-shadow: 0 0 0 2px rgba(251,242,199,0.22);
 }
 
-.personLink,
-.saleLink{
+.personLink{
   width: fit-content;
 }
 
@@ -525,24 +519,6 @@
 
 @media (max-width: 360px){
   .artistsGrid{
-    grid-template-columns: 1fr;
-  }
-}
-
-.salesGrid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-@media (max-width: 720px){
-  .salesGrid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 360px){
-  .salesGrid{
     grid-template-columns: 1fr;
   }
 }
@@ -692,10 +668,8 @@
   .landingListItem,
   .pillLink,
   .personCard,
-  .saleCard,
   .accountAvatar,
   .personAvatar,
-  .saleAvatar,
   .posterLarge,
   .mapWrap,
   .landingFooterLogo{
@@ -708,12 +682,10 @@
   .landingListItem:hover,
   .pillLink:hover,
   .personCard:hover,
-  .saleCard:hover,
   .posterLarge:hover,
   .landingFooterLogo:hover,
   .landingListItem:hover .accountAvatar,
   .personCard:hover .personAvatar,
-  .saleCard:hover .saleAvatar,
   .sectionCardCentered:hover .centerAvatar{
     transform: none;
     box-shadow: inherit;
